@@ -6,30 +6,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Anne Simon | JS Word Guess Game</title>
 
-		<script>
-			//VARIABLES
-
-			//various arrays
-			var indigo = ["i", "n", "d", "i", "g", "o"];
-			var violet = ["v", "i", "o", "l", "e", "t"];
-			var red = ["r", "e", "d"];
-
-
-			//FUNCTIONS
-			document.onkeyup = function(letter){
-
-				//determines which key the user pressed
-				var userGuess = letter.key;
-
-				//if (startGame() === true) {
-					if (userGuess==="r") {
-						document.querySelector("#r").innerHTML="r";
-					}
-				//}
-			}
-
-		</script>
-
 	</head>
 	
 	<body>
@@ -58,14 +34,14 @@
 
 
 				<h3>Current word</h3>
-					<p>Guess the colour word: <span id="r">_</span> <span id="e">_</span> <span id="d">_</span></p>
+					<p>Guess the colour word: <span id="word"></span></p>
 				
-					<button>Play again</button>
+					<button onclick="playAgain(colours)">Play again</button>
 
 
 				<h3>Score keeper</h3>
 					<ul>
-						<li><strong>Wins</strong>: <span id=""></span></li>
+						<li><strong>Wins</strong>: <span id="score"></span></li>
 						<li><strong>Number of guesses remaining</strong>: <span id=""></span></li>
 						<li><strong>Letters already pressed</strong>: <span id=""></span></li>
 					</ul>
@@ -73,5 +49,24 @@
 		<footer>
 			<p>Copyright &copy; 2018 | U of T SCS Coding Bootcamp</p>
 		</footer>
+
+<script>
+
+			//colours array
+			var colours = ["red", "indigo", "violet"];
+
+			//randomly chooses a word from the colours array
+			var randomColour = colours[Math.floor(Math.random() * colours.length)];
+
+			//if the value of randomColour is red then add three lines
+			//otherwise if the value of randomColour is violet or indigo then add 6 lines
+			if (randomColour==="red") {
+				document.querySelector("#word").innerHTML="_ _ _";
+			} else if ((randomColour==="violet") || (randomColour==="indigo")) {
+				document.querySelector("#word").innerHTML="_ _ _ _ _ _";
+			}
+
+		</script>
+
 	</body>
 </html>
