@@ -41,9 +41,9 @@
 
 				<h3>Score keeper</h3>
 					<ul>
-						<li><strong>Wins</strong>: <span id="score"></span></li>
+						<li><strong>Wins</strong>: <span id="wins"></span></li>
 						<li><strong>Number of guesses remaining</strong>: <span id=""></span></li>
-						<li><strong>Letters already pressed</strong>: <span id=""></span></li>
+						<li><strong>Letters already pressed</strong>: <span id="wrong"></span></li>
 					</ul>
 
 		<footer>
@@ -65,6 +65,33 @@
 			} else if ((randomColour==="violet") || (randomColour==="indigo")) {
 				document.querySelector("#word").innerHTML="_ _ _ _ _ _";
 			}
+
+			//initialize score to 0
+			var wins = 0;
+
+			//this function runs whenever the user presses a key
+			document.onkeyup = function(event) {
+				//determines which key the user pressed
+				var userGuess = event.key;
+				var userKeyArr = ["_", "_", "_"];
+
+				//this logic determines the outcome of the game (i.e., if the user will score a win), and increments the appropriate number
+
+				if (randomColour==="red") {
+					if (userGuess==="r") {
+						userKeyArr.splice(0, 1, "r");
+						document.querySelector("#word").innerHTML=userKeyArr;										
+					} else if (userGuess==="e") {
+						userKeyArr.splice(1, 1, "e");
+						document.querySelector("#word").innerHTML=userKeyArr;									
+					} else if (userGuess==="d") {
+						userKeyArr.splice(2, 1, "d");
+						document.querySelector("#word").innerHTML=userKeyArr;									
+					} else {
+						document.querySelector("#wrong").innerHTML=userGuess;									
+					}
+				}
+			} 			
 
 		</script>
 
