@@ -36,7 +36,7 @@
 				<h3>Current word</h3>
 					<p>Guess the colour word: <span id="word"></span></p>
 				
-					<button onclick="playAgain(colours)">Play again</button>
+					<button onclick="//refresh page">Play again</button>
 
 
 				<h3>Score keeper</h3>
@@ -66,29 +66,38 @@
 				document.querySelector("#word").innerHTML="_ _ _ _ _ _";
 			}
 
-			//initialize score to 0
-			var wins = 0;
+			var wins = 0; //initialize score to 0
+			var userKeyArr = ["_", "_", "_"]; //leave this outside/global which is outside of function
+			var userGuessPrevious = []; //leave this outside/global which is outside of function
 
 			//this function runs whenever the user presses a key
 			document.onkeyup = function(event) {
 				//determines which key the user pressed
-				var userGuess = event.key;
-				var userKeyArr = ["_", "_", "_"];
 
-				//this logic determines the outcome of the game (i.e., if the user will score a win), and increments the appropriate number
+				var userGuess = event.key; //detects the key that user guesses
+
+				userGuessPrevious.push(userGuess); //add the key in the userGuessPrevious array
 
 				if (randomColour==="red") {
 					if (userGuess==="r") {
-						userKeyArr.splice(0, 1, "r");
-						document.querySelector("#word").innerHTML=userKeyArr;										
-					} else if (userGuess==="e") {
-						userKeyArr.splice(1, 1, "e");
-						document.querySelector("#word").innerHTML=userKeyArr;									
+						userKeyArr[0]="r";
+
+							//if userKeyArr already includes the letter r 
+							if(userKeyArr.indexOf("r")) {
+								//then don't show it in the userGuessPrevious array
+								document.querySelector("#wrong").innerHTML=userGuessPrevious.//find an array method that removes a value in the array;	
+							}
+
+						document.querySelector("#word").innerHTML=userKeyArr.join("");
+										
+					} else if (userGuess==="e") {						
+						userKeyArr[1]="e";						
+						document.querySelector("#word").innerHTML=userKeyArr.join("");									
 					} else if (userGuess==="d") {
-						userKeyArr.splice(2, 1, "d");
-						document.querySelector("#word").innerHTML=userKeyArr;									
+						userKeyArr[2]="d";						
+						document.querySelector("#word").innerHTML=userKeyArr.join("");									
 					} else {
-						document.querySelector("#wrong").innerHTML=userGuess;									
+						document.querySelector("#wrong").innerHTML=userGuessPrevious.join(", ");									
 					}
 				}
 			} 			
