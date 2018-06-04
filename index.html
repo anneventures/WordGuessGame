@@ -5,46 +5,65 @@
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Anne Simon | JS Word Guess Game</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">		
 
 	</head>
 	
 	<body>
-		<header>
-			<h1>Word Guess Game</h1>		
+		<header class="jumbotron">
+			<h1>Word Guess Game</h1>
+				<div class="lead">
+					<p>Welcome! This game mimics the famous <em>Hangman</em> game (minus the hangman image).</p> 
+					<p>The theme for this game is <strong>colours of the rainbow</strong>! There are 7 colours of the rainbow, but <strong>this game only reveals 3 colours</strong>, so which colour word would appear? Only one way to find out! Play the game!</p>
+					<p><em>Please read the instructions below to learn how to play the game</em>.</p>
+				</div>
 		</header>
 
-			<h2>Getting Started</h2>
-				<p>Welcome to the <strong>Word Guess Game</strong>! This game mimics the famous <em>Hangman</em> game (minus the hangman image).</p> 
-				<p>The theme for this game is <strong>colours of the rainbow</strong>! There are 7 colours of the rainbow, but this game only reveals 3 rainbow colours, so which colour word would appear? Only one way to find out! Play the game!</p>
+		<section class="container">
+  			<div class="card">
+  			  <div class="card-header">
+  				<h2 class="card-title">Instructions</h2>
+  			  </div><!--end card header-->
 
-				<p><em>Please read the instructions below to learn how to play the game</em>.</p>
+  			  <div class="card-body card-text">
+				<img src="assets/images/rainbow-clipart.jpeg" class="img-fluid m-2 float-right" alt="">
 				
-				<h3>Instructions</h3>
-					<ol>
-						<li>Press any key to start the game</li>
-						<li>Press a letter on your keyboard (note: only lowercase letters allowed) to begin guessing the word</li>
-							<ul>
-								<li>If the letter is contained in the word, the letter will appear; otherwise, you will have to try again. You are allowed multiple tries.</li>
-								<li>Once all the letters of the word have appeared, you have won the game and will receive a score of 1.</li>
-							</ul>
-						<li>Click the <em>Play again</em> button to start a new game.</li>
-					</ol>
+				<p><strong>Note</strong>: The <em>Current Word</em> category below contains underlines that correspond to the number of letters within a word.</p>
+				<p>Follow these instructions to begin guessing the word:</p>
 
+				<ol>
+					<li>Press any key to guess a letter from the word (note: only lowercase letters allowed)</li>
+						<ul>
+							<li>If the letter is contained in the word, the letter will appear</li>
+							<li>Once you have guessed all letters of the word, you will receive a win (see <strong>Score Keeper</strong> category below).</li>
+						</ul><br/>
+					<li>Click the <em>Play again</em> button to start a new game.</li>
+				</ol>
+				
 				<p>Enjoy the game!</p>
 
+			  </div><!--end card body-->
+			</div><!--end card-->
 
-				<h3>Current word</h3>
-					<p>Guess the colour word: <span id="word"></span></p>
+			<div class="row my-5">
+			  <div class="col-md">
+				<h3>Current Word</h3>				
+					<p>Guess the word: <span id="word"></span></p>
 				
-					<button onclick="//refresh page">Play again</button>
+					<button onclick="">Play again</button>
 
+			  </div><!--end col-->
 
-				<h3>Score keeper</h3>
+			  <div class="col-md">
+				<h3>Score Keeper</h3>
 					<ul>
 						<li><strong>Wins</strong>: <span id="wins"></span></li>
 						<li><strong>Number of guesses remaining</strong>: <span id=""></span></li>
 						<li><strong>Letters already pressed</strong>: <span id="wrong"></span></li>
 					</ul>
+			  </div><!--end col-->
+
+		</section>
 
 		<footer>
 			<p>Copyright &copy; 2018 | U of T SCS Coding Bootcamp</p>
