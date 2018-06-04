@@ -70,37 +70,46 @@
 			var userKeyArr = ["_", "_", "_"]; //leave this outside/global which is outside of function
 			var userGuessPrevious = []; //leave this outside/global which is outside of function
 
-			//this function runs whenever the user presses a key
-			document.onkeyup = function(event) {
-				//determines which key the user pressed
+			document.onkeyup = function(event) { //determines which key the user pressed
 
 				var userGuess = event.key; //detects the key that user guesses
-
 				userGuessPrevious.push(userGuess); //add the key in the userGuessPrevious array
 
+				//if the random word lands on 'red', execute the following conditions
 				if (randomColour==="red") {
-					if (userGuess==="r") {
-						userKeyArr[0]="r";
 
-							//if userKeyArr already includes the letter r 
-							if(userKeyArr.indexOf("r")) {
-								//then don't show it in the userGuessPrevious array
-								document.querySelector("#wrong").innerHTML=userGuessPrevious.//find an array method that removes a value in the array;	
-							}
-
-						document.querySelector("#word").innerHTML=userKeyArr.join("");
-										
+					//if user types 'r' key then place it on 1st of userKeyArr aray	& display on screen 
+					if (userGuess==="r") { 
+						userKeyArr[0]="r"; 
+						document.querySelector("#word").innerHTML=userKeyArr.join(" ");
+					
+					//if user types 'e' key then place it on 2nd of userKeyArr aray	& display on screen
 					} else if (userGuess==="e") {						
 						userKeyArr[1]="e";						
-						document.querySelector("#word").innerHTML=userKeyArr.join("");									
+						document.querySelector("#word").innerHTML=userKeyArr.join(" ");				
+
+					//if user types 'd' key then place it on 3rd of userKeyArr aray	& display on screen
 					} else if (userGuess==="d") {
 						userKeyArr[2]="d";						
-						document.querySelector("#word").innerHTML=userKeyArr.join("");									
+						document.querySelector("#word").innerHTML=userKeyArr.join(" ");				
+
+					//whatever user types, place it in the userGuessPrevious array & display on screen
 					} else {
-						document.querySelector("#wrong").innerHTML=userGuessPrevious.join(", ");									
+						document.querySelector("#wrong").innerHTML=userGuessPrevious.join(", ");	
 					}
-				}
-			} 			
+
+					//if userKeyArr includes all the letters that make up the word 'red' then add 1 point to wins & display on screen
+					if (userKeyArr.includes("r") && userKeyArr.includes("e") && userKeyArr.includes("d")) {
+						wins++
+						document.querySelector("#wins").innerHTML=wins;	
+					}
+
+				}//end red if statement
+
+
+			} //end function		
+
+
 
 		</script>
 
