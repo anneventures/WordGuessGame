@@ -48,7 +48,8 @@
 			  <div class="col-md">
 				<h3>Current Word</h3>				
 					<p>Guess the word: <span id="word"></span></p>
-				
+					<div id="colourAppear"></div>
+					<br/>
 					<button onclick="">Play again</button>
 
 			  </div><!--end col-->
@@ -78,29 +79,40 @@
 
 			//if the value of randomColour is red then add three lines
 			//otherwise if the value of randomColour is violet or indigo then add 6 lines
-			if (randomColour==="red") {
-				document.querySelector("#word").innerHTML="_ _ _";
-			} else if (randomColour==="indigo") {
-				document.querySelector("#word").innerHTML="_ _ _ _ _ _";
-			} else if (randomColour==="green") {
-				document.querySelector("#word").innerHTML="_ _ _ _ _";
-			}
+			
+				if (randomColour==="red") {
+					document.querySelector("#word").innerHTML="_ _ _";
+				} else if (randomColour==="indigo") {
+					document.querySelector("#word").innerHTML="_ _ _ _ _ _";
+				} else if (randomColour==="green") {
+					document.querySelector("#word").innerHTML="_ _ _ _ _";
+				}
 
 			var wins = 0; //initialize score to 0
 			var userKeyArrRed = ["_", "_", "_"]; //array to store letters of 'red'
 			var userKeyArrIndigo = ["_", "_", "_", "_", "_", "_"]; //store letters of 'indigo'
 			var userKeyArrGreen = ["_", "_", "_","_","_"]; //store letters of 'green'
 
-			var userGuessPrevious = []; //array to store keys entered by user
+			var userGuessPrev = []; //array to store keys entered by user
 
 			document.onkeyup = function(event) { //determines which key the user pressed
 
 				var userGuess = event.key; //detects the key that user guesses
-				userGuessPrevious.push(userGuess); //add the key in the userGuessPrevious array
+				userGuessPrev.push(userGuess); //add the key in the userGuessPrevious array
 
 				function wrongGuess() {
-					document.querySelector("#wrong").innerHTML=userGuessPrevious.join(", ");				
+					document.querySelector("#wrong").innerHTML=userGuessPrev.join(", ");				
 				}
+
+				function correctGuess(s,c) {
+					document.getElementById("colourAppear").innerHTML = s;
+					document.getElementById("colourAppear").style.color = c;
+				}
+
+				// function nextWord() {
+				// 	userGuessPrevious[];
+				// 	randomColourExec();
+				// }
 
 				if (randomColour==="red") {
 					switch (userGuess) {
@@ -121,6 +133,7 @@
 					}
 					if (userKeyArrRed.includes("r") && userKeyArrRed.includes("e") && userKeyArrRed.includes("d")) {
 						wins++
+						correctGuess("Yes! Red is the first colour of the rainbow","red");
 					}					
 				}//end red
 
@@ -151,8 +164,9 @@
 							wrongGuess();
 					}
 
-					if (userKeyArrIndigo.includes("i") && userKeyArrIndigo.includes("n") && userKeyArrIndigo.includes("d") && userKeyArrIndigo.includes("i") && userKeyArrIndigo.includes("g") && userKeyArrIndigo.includes("o")) {
+					if (userKeyArrIndigo.includes("i") && userKeyArrIndigo.includes("n") && userKeyArrIndigo.includes("d") && userKeyArrIndigo.includes("g") && userKeyArrIndigo.includes("o")) {
 							wins++
+							correctGuess("Yes! Indigo is the sixth colour of the rainbow","#4b0082");
 						}
 				}//end indigo
 
@@ -161,29 +175,30 @@
 					switch (userGuess) {
 						case "g":
 							userKeyArrGreen[0]="g";
-							document.querySelector("#wrong").innerHTML=userKeyArrGreen.join(" ");
+							document.querySelector("#word").innerHTML=userKeyArrGreen.join(" ");
 							break;
 						case "r":
 							userKeyArrGreen[1]="r";
-							document.querySelector("#wrong").innerHTML=userKeyArrGreen.join(" ");
+							document.querySelector("#word").innerHTML=userKeyArrGreen.join(" ");
 							break;
 						case "e":
 							userKeyArrGreen[2]="e";
 							userKeyArrGreen[3]="e";
-							document.querySelector("#wrong").innerHTML=userKeyArrGreen.join(" ");
+							document.querySelector("#word").innerHTML=userKeyArrGreen.join(" ");
 							break;
 						case "n":
 							userKeyArrGreen[4]="n";
-							document.querySelector("#wrong").innerHTML=userKeyArrGreen.join(" ");
+							document.querySelector("#word").innerHTML=userKeyArrGreen.join(" ");
 							break;
 						default:
 							wrongGuess();
 					}
-					if (userKeyArrGreen.includes("g") && userKeyArrGreen.includes("r") && userKeyArrGreen.includes("e") && userKeyArrGreen.includes("e") && userKeyArrGreen.includes("n")) {
+					if (userKeyArrGreen.includes("g") && userKeyArrGreen.includes("r") && userKeyArrGreen.includes("e") && userKeyArrGreen.includes("n")) {
 							wins++
+							correctGuess("Yes! Green is the fourth colour of the rainbow","green");
+
 						}
 				}				
-
 						document.querySelector("#wins").innerHTML=wins;	
 
 			} //end function		
