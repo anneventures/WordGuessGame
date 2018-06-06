@@ -161,6 +161,15 @@ document.onkeyup = function(event) {
 			correctGuess("Yes! Red is the first colour of the rainbow.","red");				
 			document.querySelector("#keyPressed").innerHTML=userGuessPrev=[]; //reset userGuessPrev array
 			document.querySelector("#numGuesses").innerHTML = lives=7;
+			randomColour = colours[Math.floor(Math.random() * colours.length)];
+			if (randomColour==="red") {
+				document.querySelector("#word").innerHTML=userKeyArrRed;
+			} else if (randomColour==="indigo") {
+				document.querySelector("#word").innerHTML=userKeyArrIndigo;
+			} else if (randomColour==="green") {
+				document.querySelector("#word").innerHTML=userKeyArrGreen;
+			}
+
 		} 
 
 	}//end red if statement
@@ -174,7 +183,15 @@ document.onkeyup = function(event) {
 			wins++
 			correctGuess("Yes! Indigo is the sixth colour of the rainbow","#4b0082");
 			document.querySelector("#keyPressed").innerHTML=userGuessPrev=[]; //reset userGuessPrev array
-			document.querySelector("#numGuesses").innerHTML = lives=7;					
+			document.querySelector("#numGuesses").innerHTML = lives=7;
+			randomColour = colours[Math.floor(Math.random() * colours.length)];
+			if (randomColour==="red") {
+				document.querySelector("#word").innerHTML=userKeyArrRed;
+			} else if (randomColour==="indigo") {
+				document.querySelector("#word").innerHTML=userKeyArrIndigo;
+			} else if (randomColour==="green") {
+				document.querySelector("#word").innerHTML=userKeyArrGreen;
+			}								
 		}
 
 	}//end indigo if statement
@@ -190,6 +207,14 @@ document.onkeyup = function(event) {
 			correctGuess("Yes! Green is the fourth colour of the rainbow","green");
 			document.querySelector("#keyPressed").innerHTML=userGuessPrev=[]; //reset userGuessPrev array						
 			document.querySelector("#numGuesses").innerHTML = lives=7;
+			randomColour = colours[Math.floor(Math.random() * colours.length)];
+			if (randomColour==="red") {
+				document.querySelector("#word").innerHTML=userKeyArrRed;
+			} else if (randomColour==="indigo") {
+				document.querySelector("#word").innerHTML=userKeyArrIndigo;
+			} else if (randomColour==="green") {
+				document.querySelector("#word").innerHTML=userKeyArrGreen;
+			}			
 		}
 
 	}//end green if statement
