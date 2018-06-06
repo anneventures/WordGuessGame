@@ -156,7 +156,7 @@ document.onkeyup = function(event) {
 		redColour();
 
 		if (userKeyArrRed.includes("r") && userKeyArrRed.includes("e") && userKeyArrRed.includes("d")) {
-			userKeyArrRed=[];
+			userKeyArrRed=["_", "_", "_"];
 			wins++
 			correctGuess("Yes! Red is the first colour of the rainbow.","red");				
 			document.querySelector("#keyPressed").innerHTML=userGuessPrev=[]; //reset userGuessPrev array
@@ -179,7 +179,7 @@ document.onkeyup = function(event) {
 		indigoColour();
 
 		if (userKeyArrIndigo.includes("i") && userKeyArrIndigo.includes("n") && userKeyArrIndigo.includes("d") && userKeyArrIndigo.includes("g") && userKeyArrIndigo.includes("o")) {			
-			userKeyArrIndigo=[];		
+			userKeyArrIndigo=["_", "_", "_", "_", "_", "_"];		
 			wins++
 			correctGuess("Yes! Indigo is the sixth colour of the rainbow","#4b0082");
 			document.querySelector("#keyPressed").innerHTML=userGuessPrev=[]; //reset userGuessPrev array
@@ -202,7 +202,7 @@ document.onkeyup = function(event) {
 		greenColour();
 
 		if (userKeyArrGreen.includes("g") && userKeyArrGreen.includes("r") && userKeyArrGreen.includes("e") && userKeyArrGreen.includes("n")) {
-			userKeyArrGreen=[];
+			userKeyArrGreen=["_", "_", "_", "_", "_"];
 			wins++							
 			correctGuess("Yes! Green is the fourth colour of the rainbow","green");
 			document.querySelector("#keyPressed").innerHTML=userGuessPrev=[]; //reset userGuessPrev array						
